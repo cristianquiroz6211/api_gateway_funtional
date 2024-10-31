@@ -14,9 +14,9 @@ spring:
         - id: cities-route
           uri: http://localhost:8081
           predicates:
-            - Path=/general/api/v1/crearciudad/**
+            - Path=/general/api/v1/cities/crearciudad/**
           filters:
-            - RewritePath=/general/api/v1/crearciudad/(?<segment>.*), /api/v1/cities/$\{segment}
+            - RewritePath=/general/api/v1/cities/crearciudad/(?<segment>.*), /api/v1/cities/$\{segment}
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
