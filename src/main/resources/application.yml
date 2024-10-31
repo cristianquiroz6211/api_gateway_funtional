@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: states-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/general/api/v1/states/**
+          filters:
+            - RewritePath=/general/api/v1/states/(?<segment>.*), /api/v1/states/$\{segment}
+        - id: cities-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/general/api/v1/crearciudad/**
+          filters:
+            - RewritePath=/general/api/v1/crearciudad/(?<segment>.*), /api/v1/cities/$\{segment}
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+            maxAge: 3600
+
+spring.security.oauth2.resourceserver.jwt:
+  issuer-uri: https://dev-g3qtue2ymqd1uqxf.us.auth0.com/
+  audiences: https://dev-g3qtue2ymqd1uqxf.us.auth0.com/api/v2/
