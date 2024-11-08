@@ -1,6 +1,13 @@
 server:
   port: 8080
 
+  ssl:
+    enabled: true
+
+    key-store: classpath:localhost.p12
+    key-store-password: changeit
+    key-store-type: PKCS12
+
 spring:
   cloud:
     gateway:
@@ -23,7 +30,7 @@ spring:
         add-to-simple-url-handler-mapping: true
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:3000"
+            allowedOrigins: "https://localhost:3000"
             allowedMethods:
               - GET
               - POST
@@ -37,3 +44,5 @@ spring:
 spring.security.oauth2.resourceserver.jwt:
   issuer-uri: https://dev-g3qtue2ymqd1uqxf.us.auth0.com/
   audiences: https://dev-g3qtue2ymqd1uqxf.us.auth0.com/api/v2/
+
+
