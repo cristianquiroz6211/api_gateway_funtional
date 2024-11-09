@@ -1,5 +1,11 @@
 server:
   port: 8080
+  ssl:
+    enabled: true
+    key-password: changeit
+    key-store: classpath:localhost.p12
+    key-store-password: changeit
+    key-store-type: PKCS12
 
 spring:
   cloud:
@@ -23,7 +29,7 @@ spring:
         add-to-simple-url-handler-mapping: true
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "http://localhost:3000"
+            allowedOrigins: "https://localhost:3000"
             allowedMethods:
               - GET
               - POST

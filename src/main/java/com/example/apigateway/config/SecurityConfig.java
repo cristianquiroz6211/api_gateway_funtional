@@ -46,7 +46,7 @@ public class SecurityConfig {
     @Bean
     public UrlBasedCorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.addAllowedOrigin("http://localhost:3000"); // Agrega el origen de tu frontend
+        corsConfig.addAllowedOrigin("https://localhost:3000"); // Agrega el origen de tu frontend
         corsConfig.addAllowedMethod("*");
         corsConfig.addAllowedHeader("*");
         corsConfig.setAllowCredentials(true);
